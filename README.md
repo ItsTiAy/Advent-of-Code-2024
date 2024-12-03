@@ -3,4 +3,5 @@
 
 Question links:  
 [Day 1 - Historian Hysteria](<Day 1 - Historian Hysteria/questions.md>)  
-[Day 2 - Red-Nosed Reports](<Day 2 - Red-Nosed Reports/questions.md>)
+[Day 2 - Red-Nosed Reports](<Day 2 - Red-Nosed Reports/questions.md>)  
+[Day 3 - Mull It Over](<Day 3 - Mull It Over/questions.md>)
