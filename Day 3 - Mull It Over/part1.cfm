@@ -4,7 +4,6 @@
 
 <cfset out = reFind("mul\(\d+,\d+\)", values, "1", true, "all")>
 
-
 <cfloop item="mul" array="#out#">
     <cfset values = listToArray(mul.match[1], ",")>
     <cfset a = mid(values[1], 5)>
