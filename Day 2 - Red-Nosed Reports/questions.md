@@ -14,7 +14,7 @@ The unusual data (your puzzle input) consists of many **reports**, one report pe
     1 3 2 4 5
     8 6 4 4 1
     1 3 6 7 9
-
+    
 This example data contains six reports each containing five levels.
 
 The engineers are trying to figure out which reports are **safe**. The Red-Nosed reactor safety systems can only tolerate levels that are either gradually increasing or gradually decreasing. So, a report only counts as safe if both of the following are true:
@@ -24,14 +24,14 @@ The engineers are trying to figure out which reports are **safe**. The Red-Nosed
 
 In the example above, the reports can be found safe or unsafe by checking those rules:
 
-    7 6 4 2 1: Safe because the levels are all decreasing by 1 or 2.
-    1 2 7 8 9: Unsafe because 2 7 is an increase of 5.
-    9 7 6 2 1: Unsafe because 6 2 is a decrease of 4.
-    1 3 2 4 5: Unsafe because 1 3 is increasing but 3 2 is decreasing.
-    8 6 4 4 1: Unsafe because 4 4 is neither an increase or a decrease.
-    1 3 6 7 9: Safe because the levels are all increasing by 1, 2, or 3.
+* `7 6 4 2 1`: Safe because the levels are all decreasing by 1 or 2.
+* `1 2 7 8 9`: Unsafe because `2 7` is an increase of 5.
+* `9 7 6 2 1`: Unsafe because `6 2` is a decrease of 4.
+* `1 3 2 4 5`: Unsafe because `1 3` is increasing but `3 2` is decreasing.
+* `8 6 4 4 1`: Unsafe because `4 4` is neither an increase or a decrease.
+* `1 3 6 7 9`: Safe because the levels are all increasing by 1, 2, or 3.
 
-So, in this example, **2** reports are **safe.**
+So, in this example, **`2`** reports are **safe.**
 
 Analyze the unusual data from the engineers. **How many reports are safe?**
 
@@ -45,13 +45,13 @@ Now, the same rules apply as before, except if removing a single level from an u
 
 More of the above example's reports are now safe:
 
-    7 6 4 2 1: Safe without removing any level.
-    1 2 7 8 9: Unsafe regardless of which level is removed.
-    9 7 6 2 1: Unsafe regardless of which level is removed.
-    1 3 2 4 5: Safe by removing the second level, 3.
-    8 6 4 4 1: Safe by removing the third level, 4.
-    1 3 6 7 9: Safe without removing any level.
+* <code>7 6 4 2 1</code>: **Safe** without removing any level.
+* <code>1 2 7 8 9</code>: **Unsafe** regardless of which level is removed.
+* <code>9 7 6 2 1</code>: **Unsafe** regardless of which level is removed.
+* <code>1 **3** 2 4 5</code>: **Safe** by removing the second level, 3.
+* <code>8 6 **4** 4 1</code>: **Safe** by removing the third level, 4.
+* <code>1 3 6 7 9</code>: **Safe** without removing any level.
 
-Thanks to the Problem Dampener, **4** reports are actually **safe!**
+Thanks to the Problem Dampener, **`4`** reports are actually **safe**!
 
 Update your analysis by handling situations where the Problem Dampener can remove a single level from unsafe reports. **How many reports are now safe?**
