@@ -8,3 +8,4 @@ Question links:
 [Day 4 - Ceres Search](<Day 4 - Ceres Search/questions.md>)  
 [Day 5 - Print Queue](<Day 5 - Print Queue/questions.md>)  
 [Day 6 - Guard Gallivant](<Day 6 - Guard Gallivant/questions.md>)  
+[Day 7 - Bridge Repair](<Day 7 - Bridge Repair/questions.md>)  

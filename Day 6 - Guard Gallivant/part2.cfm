@@ -1,5 +1,3 @@
-<!--- Used cfscript tags as using the tags ran into issues; possibly heap memory related --->
-
 <cfscript>
     values = fileRead("input.txt");
     lines = listToArray(values, Chr(10));
@@ -69,7 +67,6 @@
     
                 if (structKeyExists(newVisited, serializedPos) && (newVisited[serializedPos] == dirIndex))
                 {
-
                     return {};
                 }
     
