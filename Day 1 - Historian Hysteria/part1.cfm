@@ -1,26 +1,27 @@
-<cfset left = []>
-<cfset right = []>
+<cfscript>
+    lines = application.inputReader.getInput();
 
-<cfset distance = 0>
+    left = [];
+    right = [];
 
-<cffile action="read" file="input.txt" variable="values">
+    distance = 0;
 
-<cfset lines = listToArray(values, Chr(10))>
+    for (i = 1; i <= arrayLen(lines); i++)
+    {
+        line = listToArray(lines[i], "   ");
+        arrayAppend(left, val(line[1]));
+        arrayAppend(right, val(line[2]));
+    }
 
-<cfloop index="i" from="1" to="#arraylen(lines)#">
-    <cfset line = listToArray(lines[i], "   ")>
+    arraysort(left, "numeric", "asc");
+    arraysort(right, "numeric", "asc");
 
-    <cfset arrayAppend(left, val(line[1]))>
-    <cfset arrayAppend(right, val(line[2]))>
-</cfloop>
+    for (i = 1; i <= arrayLen(left); i++)
+    {
+        distance += abs(left[i] - right[i]);
+    }
 
-<cfset arraySort(left, "numeric", "asc")>
-<cfset arraySort(right, "numeric", "asc")>
-
-<cfloop index="i" from="1" to="#arraylen(left)#">
-    <cfset distance += abs(left[i] - right[i])>
-</cfloop>
-
-<cfoutput>#distance#</cfoutput>
+    writeOutput(distance);
+</cfscript>
 
 <!--- Answer: 1938424 --->

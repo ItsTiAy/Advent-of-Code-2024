@@ -10,7 +10,7 @@
         arrayAppend(map, line);
     }
 
-    antennas = structnew("casesensitive");
+    antennas = structNew("casesensitive");
     antennaPairs = structNew("casesensitive");
     uniqueLocations = {};
 

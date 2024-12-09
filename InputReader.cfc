@@ -1,4 +1,4 @@
-component displayName="InputReader"
+component
 {
     public array function getInput()
     {

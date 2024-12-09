@@ -1,44 +1,53 @@
-<cfset safeReports = 0>
-<cfset reports = []>
+<cfscript>
+    lines = application.inputReader.getInput();
 
-<cffile action="read" file="input.txt" variable="values">
+    safeReports = 0;
+    reports = [];
 
-<cfset lines = listToArray(values, Chr(10))>
+    for (i = 1; i <= arrayLen(lines); i++)
+    {
+        line = listToArray(lines[i], " ");
+        arrayAppend(reports, line);
+    }
 
-<cfloop index="i" from="1" to="#arraylen(lines)#">
-    <cfset line = listToArray(lines[i], " ")>
-    <cfset arrayAppend(reports, line)>   
-</cfloop>
+    for (report in reports)
+    {
+        if (report[1] == report[2])
+        {
+            continue;
+        }
 
-<cfloop item="report" array="#reports#">
-    
-    <cfif report[1] EQ report[2]>
-        <cfcontinue>
-    </cfif>
-    
-    <cfset safe = true>
+        safe = true;
 
-    <cfif report[1] GT report[2]>
-        <cfset firstBound = 3>
-        <cfset secondBound = 1>
-    <cfelse>
-        <cfset firstBound = -1>
-        <cfset secondBound = -3>
-    </cfif>
+        if (report[1] > report[2])
+        {
+            firstBound = 3;
+            secondBound = 1;
+        }
+        else
+        {
+            firstBound = -1;
+            secondBound = -3;   
+        }
 
-    <cfloop index="i" from="1" to="#arrayLen(report) - 1#">
-        <cfset difference = val(report[i]) - val(report[i + 1])>
-        <cfif (difference GT firstBound) OR (difference LT secondBound)>          
-            <cfset safe = false>
-            <cfbreak>
-        </cfif>
-    </cfloop>
+        for (i = 1; i <= arrayLen(report) - 1; i++)
+        {
+            difference = val(report[i]) - val(report[i + 1]);
+            
+            if ((difference > firstBound) || (difference < secondBound))
+            {
+                safe = false;
+                break;
+            }
+        }
 
-    <cfif safe>
-        <cfset safeReports++>
-    </cfif>
-</cfloop>
+        if (safe)
+        {
+            safeReports++;
+        }
+    }
 
-<cfoutput>#safeReports#</cfoutput>
+    writeOutput(safeReports);
+</cfscript>
 
 <!--- Answer: 257 --->

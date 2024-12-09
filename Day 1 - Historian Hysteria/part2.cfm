@@ -1,34 +1,38 @@
-<cfset left = []>
-<cfset right = []>
+<cfscript>
+    lines = application.inputReader.getInput();
 
-<cfset similarity = 0>
-<cfset instances = {}>
+    left = [];
+    right = [];
 
-<cffile action="read" file="input.txt" variable="values">
+    similarity = 0;
+    instances = {};
 
-<cfset lines = listToArray(values, Chr(10))>
+    for (i = 1; i <= arrayLen(lines); i++)
+    {
+        line = listToArray(lines[i], "   ");
+        arrayAppend(left, val(line[1]));
+        arrayAppend(right, val(line[2]));
+    }
 
-<cfloop index="i" from="1" to="#arraylen(lines)#">
-    <cfset line = listToArray(lines[i], "   ")>
+    for (key in right)
+    {
+        if (!structKeyExists(instances, key))
+        {
+            instances[key] = 0;
+        }
 
-    <cfset arrayAppend(left, val(line[1]))>
-    <cfset arrayAppend(right, val(line[2]))>
-</cfloop>
+        instances[key]++;    
+    }
 
-<cfloop item="key" array="#right#">
-    <cfif structKeyExists(instances, key)>
-        <cfset instances[key]++>
-    <cfelse>
-        <cfset instances[key] = 1>
-    </cfif>
-</cfloop>
+    for (key in left)
+    {
+        if (structKeyExists(instances, key))
+        {
+            similarity += instances[key] * key;
+        }
+    }
 
-<cfloop item="key" array="#left#">
-    <cfif structKeyExists(instances, key)>
-        <cfset similarity += instances[key] * key>
-    </cfif>
-</cfloop>
-
-<cfoutput>#similarity#</cfoutput>
+    writeOutput(similarity);
+</cfscript>
 
 <!--- Answer 22014209 --->

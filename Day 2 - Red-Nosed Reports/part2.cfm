@@ -1,59 +1,72 @@
-<cfset safeReports = 0>
-<cfset reports = []>
+<cfscript>
+    values = fileRead("input.txt");
+    lines = listToArray(values, Chr(10));
 
-<cffile action="read" file="input.txt" variable="values">
-
-<cfset lines = listToArray(values, Chr(10))>
-
-<cfloop index="i" from="1" to="#arraylen(lines)#">
-    <cfset line = listToArray(lines[i], " ")>
-    <cfset arrayAppend(reports, line)>   
-</cfloop>
-
-<cffunction access="private" returntype="boolean" name="IsSafe">
-    <cfargument required="true" type="array" name="report">
-
-    <cfif report[1] EQ report[2]>
-        <cfreturn false>
-    </cfif>
-
-    <cfset safe = true>
+    safeReports = 0;
+    reports = [];
+  
+    for (i = 1; i <= arrayLen(lines); i++)
+    {
+        line = listToArray(lines[i], " ");
+        arrayAppend(reports, line);
+    }
     
-    <cfif report[1] GT report[2]>
-        <cfset firstBound = 3>
-        <cfset secondBound = 1>
-    <cfelse>
-        <cfset firstBound = -1>
-        <cfset secondBound = -3>
-    </cfif>
+    for (report in reports)
+    {
+        if (isSafe(report))
+        {
+            safeReports++;
+            continue;
+        }
+        
+        for (i = 1; i <= arrayLen(report); i++)
+        {
+            tempReport = duplicate(report);
+            arrayDeleteAt(tempReport, i);
+            
+            if (isSafe(tempReport))
+            {
+                safeReports++;
+                break;
+            }
+        }
+    }
 
-    <cfloop index="i" from="1" to="#arrayLen(report) - 1#">
-        <cfset difference = val(report[i]) - val(report[i + 1])>
-        <cfif (difference GT firstBound) OR (difference LT secondBound)>          
-            <cfset safe = false>
-            <cfbreak>
-        </cfif>
-    </cfloop>
+    writeOutput(safeReports);
 
-    <cfreturn safe>
-</cffunction>
+    private boolean function isSafe(required array currentReport)
+    {
+        if (currentReport[1] == currentReport[2])
+        {
+            return false;
+        }
 
-<cfloop item="report" array="#reports#">    
-    <cfif IsSafe(report)>
-        <cfset safeReports++>
-        <cfcontinue>
-    </cfif>
+        safe = true;
 
-    <cfloop index="i" from="1" to="#arrayLen(report)#">
-        <cfset tempReport = duplicate(report)>
-        <cfset arrayDeleteAt(tempReport, i)>
-        <cfif IsSafe(tempReport)>
-            <cfset safeReports++>
-            <cfbreak>
-        </cfif>
-    </cfloop>
-</cfloop>
+        if (currentReport[1] > currentReport[2])
+        {
+            firstBound = 3;
+            secondBound = 1;
+        }
+        else
+        {
+            firstBound = -1;
+            secondBound = -3;   
+        }
 
-<cfoutput>#safeReports#</cfoutput>
+        for (j = 1; j <= arrayLen(currentReport) - 1; j++)
+        {
+            difference = val(currentReport[j]) - val(currentReport[j + 1]);
+
+            if ((difference > firstBound) || (difference < secondBound))
+            {
+                safe = false;
+                break;
+            }
+        }
+
+        return safe;
+    }
+</cfscript>
 
 <!--- Answer: 328 --->
