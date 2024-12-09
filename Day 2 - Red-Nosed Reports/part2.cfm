@@ -1,6 +1,5 @@
 <cfscript>
-    values = fileRead("input.txt");
-    lines = listToArray(values, Chr(10));
+    lines = application.inputReader.getInput();
 
     safeReports = 0;
     reports = [];
