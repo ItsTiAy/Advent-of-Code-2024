@@ -10,3 +10,4 @@ Question links:
 [Day 6 - Guard Gallivant](<Day 6 - Guard Gallivant/questions.md>)  
 [Day 7 - Bridge Repair](<Day 7 - Bridge Repair/questions.md>)  
 [Day 8 - Resonant Collinearity](<Day 8 - Resonant Collinearity/questions.md>)
+[Day 9 - Disk Fragmenter](<Day 9 - Disk Fragmenter/questions.md>)
