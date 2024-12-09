@@ -2,7 +2,17 @@ component
 {
     public array function getInput()
     {
-        values = fileRead(expandPath("input.txt"));
-        return listToArray(trim(values), Chr(10));
+        output = [];
+
+        input = fileOpen(expandPath("input.txt"), "read");
+
+        while (!fileIsEOF(input))
+        {
+            arrayAppend(output, trim(fileReadLine(input)));
+        }
+
+        fileClose(input);
+
+        return output;
     }
 }

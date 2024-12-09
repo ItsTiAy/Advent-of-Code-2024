@@ -1,55 +1,59 @@
-<cffile action="read" file="input.txt" variable="values">
+<cfscript>
+    rows = application.inputReader.getInput();
 
-<cfset xmasNum = 0>
+    xmasNum = 0;
+    wordSearch = arrayNew(2);
 
-<cfset rows = listToArray(values, Chr(10))>
-<cfset wordSearch = arrayNew(2)>
+    for (i = 1; i <= arrayLen(rows); i++)
+    {
+        rowArray = [];
+        for (j = 1; j <= len(rows[i]); j++)
+        {
+            arrayAppend(rowArray, mid(rows[i], j, 1));
+            wordSearch[i][j] = rowArray[j];
+        }
+    }
 
-<cfloop index="i" from="1" to="#arrayLen(rows)#">
-    <cfset rowArray = []>
-    <cfloop index="j" from="1" to="#len(rows[i]) - 1#">
-        <cfset arrayAppend(rowArray, mid(rows[i], j, 1))>
-        <cfset wordSearch[i][j] = rowArray[j]>
-    </cfloop>
-</cfloop>
+    for (y = 1; y <= arrayLen(wordSearch); y++)
+    {
+        for (x = 1; x <= arrayLen(wordSearch[y]); x++)
+        {
+            current = wordSearch[x][y];
+            if (current == "A")
+            {
+                xmasNum += CheckAround(x, y);
+            }
+        }
+    }
 
-<cfloop index="y" from="1" to="#arrayLen(wordSearch)#">
-    <cfloop index="x" from="1" to="#arrayLen(wordSearch[y])#">
-        <cfset current = wordSearch[x][y]>
-        <cfif current EQ "A">
-            <cfset xmasNum += CheckAround(x, y)>
-        </cfif>
-    </cfloop>
-</cfloop>
+    private number function CheckAround(required number currentX, required number currentY) 
+    {
+        currentXmasNum = 0;
+        
+        try 
+        {
+            topLeft = wordSearch[currentX - 1][currentY - 1];
+            bottomRight = wordSearch[currentX + 1][currentY + 1];
+            bottomLeft = wordSearch[currentX - 1][currentY + 1];
+            topRight = wordSearch[currentX + 1][currentY - 1];
 
-<cffunction access="private" returntype="number" name="CheckAround">
-    <cfargument required="true" type="number" name="currentX">
-    <cfargument required="true" type="number" name="currentY">
+            if (((topLeft == "M" && bottomRight == "S") OR
+                (topLeft == "S" && bottomRight == "M")) && 
+                ((bottomLeft == "M" && topRight == "S") OR
+                (bottomLeft == "S" && topRight == "M")))
+            {
+                currentXmasNum++;
+            }
+        }
+        catch (any e)
+        {
+            return currentXmasNum;
+        }
 
-    <cfset currentXmasNum = 0>
+        return currentXmasNum;
+    }
 
-    <cftry>
-        <cfset topLeft = wordSearch[currentX - 1][currentY - 1]>
-        <cfset bottomRight = wordSearch[currentX + 1][currentY + 1]>
-
-        <cfset bottomLeft = wordSearch[currentX - 1][currentY + 1]>
-        <cfset topRight = wordSearch[currentX + 1][currentY - 1]>
-
-        <cfif ((topLeft EQ "M" AND bottomRight EQ "S") OR
-              (topLeft EQ "S" AND bottomRight EQ "M")) AND 
-              ((bottomLeft EQ "M" AND topRight EQ "S") OR
-              (bottomLeft EQ "S" AND topRight EQ "M"))>
-            <cfset currentXmasNum++>
-        </cfif>
-
-        <cfcatch>
-            <cfreturn currentXmasNum>
-        </cfcatch>
-    </cftry>
-
-    <cfreturn currentXmasNum>
-</cffunction>
-
-<cfoutput>#xmasNum#</cfoutput>
+    writeOutput(xmasNum);
+</cfscript>
 
 <!--- Answer: 1908--->

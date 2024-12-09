@@ -1,27 +1,40 @@
-<cffile action="read" file="input.txt" variable="values">
+<cfscript>
+    lines = application.inputReader.getInput();
 
-<cfset total = 0>
-<cfset add = true>
+    total = 0
+    add = true;
+    items = [];
 
-<cfset items = reFind("mul\(\d+,\d+\)|don't\(\)|do\(\)", values, "1", true, "all")>
+    for (line in lines)
+    {
+        arrayAppend(items, reFind("mul\(\d+,\d+\)|don't\(\)|do\(\)", line, "1", true, "all"), true);
+    }
 
-<cfloop item="item" array="#items#">
-    <cfif item.match[1] EQ "don't()">
-        <cfset add = false>
-        <cfcontinue>
-    <cfelseif item.match[1] EQ "do()">
-        <cfset add = true>
-        <cfcontinue>
-    </cfif>
+    for (item in items)
+    {
+        word = item.match[1];
+        
+        if (word == "don't()")
+        {
+            add = false;
+            continue;
+        }
+        else if (word == "do()")
+        {
+            add = true;
+            continue;
+        }
 
-    <cfif add>
-        <cfset values = listToArray(item.match[1], ",")>
-        <cfset a = mid(values[1], 5)>
-        <cfset b = mid(values[2], 1, Len(values[2]) - 1)>
-        <cfset total += (a * b)>
-    </cfif>
-</cfloop>
+        if (add)
+        {
+            values = listToArray(word, ",");
+            a = mid(values[1], 5);
+            b = mid(values[2], 1, len(values[2]) - 1);
+            total += (a * b);
+        }
+    }
 
-<cfoutput>#total#</cfoutput>
+    writeOutput(total);
+</cfscript>
 
-<!--- Answer: 74361272--->
+<!--- Answer: 74361272 --->

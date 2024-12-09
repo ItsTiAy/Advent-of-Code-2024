@@ -1,16 +1,23 @@
-<cffile action="read" file="input.txt" variable="values">
+<cfscript>
+    lines = application.inputReader.getInput();
 
-<cfset total = 0>
+    total = 0
+    out = [];
 
-<cfset out = reFind("mul\(\d+,\d+\)", values, "1", true, "all")>
+    for (line in lines)
+    {
+        arrayAppend(out, reFind("mul\(\d+,\d+\)", line, "1", true, "all"), true);
+    }
 
-<cfloop item="mul" array="#out#">
-    <cfset values = listToArray(mul.match[1], ",")>
-    <cfset a = mid(values[1], 5)>
-    <cfset b = mid(values[2], 1, Len(values[2]) - 1)>
-    <cfset total += (a * b)>
-</cfloop>
+    for(mul in out)
+    {
+        values = listToArray(mul.match[1], ",");
+        a = mid(values[1], 5);
+        b = mid(values[2], 1, Len(values[2]) - 1);
+        total += (a * b);
+    }
 
-<cfoutput>#total#</cfoutput>
+    writeOutput(total);
+</cfscript>
 
-<!--- Answer: 175615763--->
+<!--- Answer: 175615763 --->
