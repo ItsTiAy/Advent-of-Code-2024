@@ -12,3 +12,4 @@ Question links:
 [Day 08 - Resonant Collinearity](<Day 08 - Resonant Collinearity/questions.md>)  
 [Day 09 - Disk Fragmenter](<Day 09 - Disk Fragmenter/questions.md>)  
 [Day 10 - Hoof It](<Day 10 - Hoof It/questions.md>)  
+[Day 11 - Plutonian Pebbles](<Day 11 - Plutonian Pebbles/questions.md>)  
