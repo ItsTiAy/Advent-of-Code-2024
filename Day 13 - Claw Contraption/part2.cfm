@@ -18,8 +18,8 @@
 
             if (j == 3)
             {
-                positions[1] = 10000000000000 + positions[1];
-                positions[2] = 10000000000000 + positions[2];
+                positions[1] += 10000000000000;
+                positions[2] += 10000000000000;
             }
 
             arrayAppend(machine, positions);        
@@ -61,7 +61,6 @@
             tokens += (a * 3) + b;
         }
     }
-
 
     writeOutput(tokens);
 

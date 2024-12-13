@@ -56,7 +56,6 @@
         }
     }
 
-
     writeOutput(tokens);
 
 </cfscript>
