@@ -14,3 +14,4 @@ Question links:
 [Day 10 - Hoof It](<Day 10 - Hoof It/questions.md>)  
 [Day 11 - Plutonian Pebbles](<Day 11 - Plutonian Pebbles/questions.md>)  
 [Day 12 - Garden Groups](<Day 12 - Garden Groups/questions.md>)  
+[Day 13 - Claw Contraption](<Day 13 - Claw Contraption/questions.md>)  
