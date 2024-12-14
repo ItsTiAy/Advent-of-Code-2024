@@ -74,7 +74,7 @@
         </cfloop>
     </div>
 
-    <form action="#CGI.SCRIPT_NAME#" method="post">
+    <form method="post">
         <input type="hidden" name="iterations" value="<cfoutput>#iterations + 1#</cfoutput>">
         <input type="hidden" name="jsonData" value='<cfoutput>#serializeJSON(positions)#</cfoutput>'>
         <button id="step" type="submit">Step</button>
