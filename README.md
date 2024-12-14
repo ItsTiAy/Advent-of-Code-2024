@@ -15,3 +15,4 @@ Question links:
 [Day 11 - Plutonian Pebbles](<Day 11 - Plutonian Pebbles/questions.md>)  
 [Day 12 - Garden Groups](<Day 12 - Garden Groups/questions.md>)  
 [Day 13 - Claw Contraption](<Day 13 - Claw Contraption/questions.md>)  
+[Day 14 - Restroom Redoubt](<Day 14 - Restroom Redoubt/questions.md>)  
