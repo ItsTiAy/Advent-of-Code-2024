@@ -1,10 +1,3 @@
-<style>
-    html
-    {
-        font-family: monospace;
-    }
-</style>
-
 <cfscript>
     lines = application.inputReader.getInput();
 
