@@ -16,3 +16,4 @@ Question links:
 [Day 12 - Garden Groups](<Day 12 - Garden Groups/questions.md>)  
 [Day 13 - Claw Contraption](<Day 13 - Claw Contraption/questions.md>)  
 [Day 14 - Restroom Redoubt](<Day 14 - Restroom Redoubt/questions.md>)  
+[Day 15 - Warehouse Woes](<Day 15 - Warehouse Woes/questions.md>)  
