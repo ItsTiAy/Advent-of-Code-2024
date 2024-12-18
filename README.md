@@ -17,5 +17,6 @@ Question links:
 [Day 13 - Claw Contraption](<Day 13 - Claw Contraption/questions.md>)  
 [Day 14 - Restroom Redoubt](<Day 14 - Restroom Redoubt/questions.md>)  
 [Day 15 - Warehouse Woes](<Day 15 - Warehouse Woes/questions.md>)  
-[Day 16 - Reindeer Maze](<Day 16 - Reindeer Maze/questions.md>)  
+Day 16 - Reindeer Maze  
 [Day 17 - Chronospatial Computer](<Day 17 - Chronospatial Computer/questions.md>)  
+[Day 18 - RAM Run](<Day 18 - RAM Run/questions.md>)  
