@@ -1,0 +1,2 @@
+<link rel="stylesheet" type="text/css" href="../styles.css?v=1.0">
+<title><cfoutput>#listToArray(getBaseTemplatePath(), "\")[-2] & " | Part " & reMatch("\d+", listToArray(getBaseTemplatePath(), "\")[-1])[1]#</cfoutput></title>
