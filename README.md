@@ -21,3 +21,4 @@ Question links:
 [Day 17 - Chronospatial Computer](<Day 17 - Chronospatial Computer/questions.md>)  
 [Day 18 - RAM Run](<Day 18 - RAM Run/questions.md>)  
 [Day 19 - Linen Layout](<Day 19 - Linen Layout/questions.md>)  
+[Day 20 - Race Condition](<Day 20 - Race Condition/questions.md>)  
